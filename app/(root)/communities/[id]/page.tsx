@@ -14,7 +14,6 @@ async function Page({ params }: { params: { id: string } }) {
     const communityDetails = await fetchCommunityDetails(params.id)
 
     return (
-
         <section>
             <ProfileHeader
                 accountId={communityDetails.id}
@@ -50,12 +49,14 @@ async function Page({ params }: { params: { id: string } }) {
                     </TabsList>
 
                     <TabsContent value="threads" className='w-full text-light-1'>
+                        {/* @ts-ignore */}
                         <ThreadsTab
                             currentUserId={user.id}
                             accountId={communityDetails._id}
                             accountType="Community"
                         />
                     </TabsContent>
+
                     <TabsContent value="members" className='w-full text-light-1'>
                         <section className="mt-9 flex flex-col gap-10">
                             {communityDetails?.members.map((member: any) => (
@@ -70,7 +71,9 @@ async function Page({ params }: { params: { id: string } }) {
                             ))}
                         </section>
                     </TabsContent>
+
                     <TabsContent value="requests" className='w-full text-light-1'>
+                        {/* @ts-ignore */}
                         <ThreadsTab
                             currentUserId={user.id}
                             accountId={communityDetails._id}
@@ -80,7 +83,7 @@ async function Page({ params }: { params: { id: string } }) {
                 </Tabs>
             </div>
         </section>
-    )
+    );
 }
 
 export default Page;

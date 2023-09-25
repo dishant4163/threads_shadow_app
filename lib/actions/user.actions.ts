@@ -2,9 +2,11 @@
 
 import { FilterQuery, SortOrder } from "mongoose";
 import { revalidatePath } from "next/cache";
+
 import Community from "../models/community.model";
 import Thread from "../models/thread.model";
 import User from "../models/user.model";
+
 import { connectToDB } from "../mongoose";
 
 export async function fetchUser(userId: string) {
@@ -29,7 +31,13 @@ interface Params {
   path: string;
 }
 
-export async function updateUser({ userId, bio, name, path,username, image,
+export async function updateUser({
+  userId,
+  bio,
+  name,
+  path,
+  username,
+  image,
 }: Params): Promise<void> {
   try {
     connectToDB();
@@ -124,6 +132,7 @@ export async function fetchUsers({
 
     // Define the sort options for the fetched users based on createdAt field and provided sort order.
     const sortOptions = { createdAt: sortBy };
+
     const usersQuery = User.find(query)
       .sort(sortOptions)
       .skip(skipAmount)
