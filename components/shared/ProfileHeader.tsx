@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { type } from "os";
 
 interface Props {
     accountId: string;
@@ -7,6 +8,7 @@ interface Props {
     username: string;
     imgUrl: string;
     bio: string;
+    type?: 'User' | 'Community';
 }
 
 const ProfileHeader = ({ accountId, authUserId, name, username, imgUrl, bio }: Props) => {
